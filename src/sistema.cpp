@@ -10,6 +10,8 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <ctime>
+#include <iomanip>
 
 using namespace std;
 /* COMANDOS */
@@ -363,7 +365,7 @@ string Sistema::send_message(int id, const string mensagem) {
         return "Você não está em um canal";
       for(int i=0; i<servidores.size(); i++)
         if(servidores[i].getNome() == (itr->second).first){
-          servidores[i].addMensagem_Server(id, mensagem, (itr->second).second);
+          servidores[i].addMensagem_Server(id, mensagem, (itr->second).second, this->DataHora());
 
           ofstream myfile("../data/canais_servidores/"+servidores[i].getNome()+"_"+(itr->second).second+".txt",fstream::app);
           stringstream ss;
@@ -372,6 +374,7 @@ string Sistema::send_message(int id, const string mensagem) {
           ss >> sid;
           myfile << sid <<endl;
           myfile << mensagem <<endl;
+          myfile << this->DataHora() <<endl;
           myfile.close();
         }
       return "Mensagem enviada";
@@ -427,14 +430,15 @@ void Sistema::load_server() {
       while(getline (myfile2,nome)){
         temp.addCanal(nome);
         //Carregando mensagens do canal
-        string autor,mensagem;
+        string autor,mensagem,datahora;
         ifstream myfile3("../data/canais_servidores/"+temp.getNome()+"_"+nome+".txt");
         while(getline (myfile3,autor)){
           getline (myfile3,mensagem);
+          getline (myfile3,datahora);
           ss.clear();
           ss << autor;  
           ss >> iid;
-          temp.addMensagem_Server(iid, mensagem, nome);
+          temp.addMensagem_Server(iid, mensagem, nome, datahora);
         }
         myfile3.close();
       }
@@ -462,4 +466,32 @@ void Sistema::copy_servers(){
     myfile.close();
     myfileC.close();
   }
+}
+string Sistema::DataHora(){
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+
+    string ano, mes, dia, hor, min;
+    stringstream ss;
+
+    ss << 1900 + ltm->tm_year;  
+    ss >> ano; 
+    ss.clear();
+
+    ss << setw(2) << setfill('0') << 1 + ltm->tm_mon;
+    ss >> mes;
+    ss.clear();
+
+    ss << setw(2) << setfill('0') << ltm->tm_mday;
+    ss >> dia;
+    ss.clear();
+
+    ss << setw(2) << setfill('0') << ltm->tm_hour;
+    ss >> hor;
+    ss.clear();
+
+    ss << setw(2) << setfill('0') << ltm->tm_min;
+    ss >> min;
+    
+    return "<"+dia+"/"+mes+"/"+ano+" - "+hor+":"+min+">";
 }
