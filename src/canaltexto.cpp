@@ -18,8 +18,8 @@ string CanalTexto::getNome(){
     return this->nome;
 }
 
-void CanalTexto::addMensagem(int id, const string mensagem){
-    Mensagem temp(this->HoraData(), id, mensagem);
+void CanalTexto::addMensagem(int id, const string mensagem, string datahora){
+    Mensagem temp(datahora, id, mensagem);
     mensagens.push_back(temp);
 }
 
@@ -36,33 +36,4 @@ void CanalTexto::printMensagens(vector<Usuario> *usuarios){
             }
         
     }
-}
-
-string CanalTexto::HoraData(){
-    time_t now = time(0);
-    tm *ltm = localtime(&now);
-
-    string ano, mes, dia, hor, min;
-    stringstream ss;
-
-    ss << 1900 + ltm->tm_year;  
-    ss >> ano; 
-    ss.clear();
-
-    ss << setw(2) << setfill('0') << 1 + ltm->tm_mon;
-    ss >> mes;
-    ss.clear();
-
-    ss << setw(2) << setfill('0') << ltm->tm_mday;
-    ss >> dia;
-    ss.clear();
-
-    ss << setw(2) << setfill('0') << ltm->tm_hour;
-    ss >> hor;
-    ss.clear();
-
-    ss << setw(2) << setfill('0') << ltm->tm_min;
-    ss >> min;
-    
-    return "<"+dia+"/"+mes+"/"+ano+" - "+hor+":"+min+">";
 }
