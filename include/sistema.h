@@ -182,6 +182,13 @@ class Sistema {
 
 		/*! Gera cópia do arquivo de servidores para fins de edição do documento */
 		void copy_servers();
+	
+		/*!
+		* @brief Retorna string de Data e Hora no padrão especificado no documento do projeto
+		* 
+		* @return string 
+		*/
+		string DataHora();
 };
 
 #endif
