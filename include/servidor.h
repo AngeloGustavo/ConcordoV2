@@ -106,7 +106,7 @@ class Servidor{
 		* @param nome 
 		*/
 		void addCanal(string nome);
-			
+			 
 		/**
 		* @brief Checa se já existe canal no servidor com o nome dado
 		* 
@@ -123,7 +123,7 @@ class Servidor{
 		* @param mensagem 
 		* @param canal 
 		*/
-		void addMensagem_Server(int id, const string mensagem, string canal);
+		void addMensagem_Server(int id, const string mensagem, string canal, string datahora);
 			
 		/**
 		* @brief Lista elementos do vetor de mensagens
