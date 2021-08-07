@@ -72,9 +72,15 @@ string Sistema::create_server(int id, const string nome) {
       myfile << endl;
       myfile << endl;
       myfile.close();
-
-      ofstream myfile2("../data/canais_servidores/"+nome+".txt",fstream::app);
+      ofstream myfile2("../data/copia_servidores.txt",fstream::app);
+      myfile2 << id <<endl;
+      myfile2 << nome <<endl;
+      myfile2 << endl;
+      myfile2 << endl;
       myfile2.close();
+
+      ofstream myfile3("../data/canais_servidores/"+nome+".txt",fstream::app);
+      myfile3.close();
 
       return "Servidor criado"; 
     }
@@ -196,6 +202,36 @@ string Sistema::remove_server(int id, const string nome) {
               if((itr->second).first == nome)
                 itr->second = {"",""};
             servidores.erase(servidores.begin() + i);
+
+            //Remove server de arquivos
+            string idA,nomeA,descA,codeA;
+            ofstream myfile ("../data/servidores.txt");
+            ifstream myfileC("../data/copia_servidores.txt");
+            if (myfileC.is_open()){ 
+              while(getline (myfileC,idA)){
+                getline (myfileC,nomeA);
+                getline (myfileC,descA);
+                getline (myfileC,codeA);
+                if(nomeA != nome){
+                  myfile << idA <<endl;
+                  myfile << nomeA <<endl;
+                  myfile << descA <<endl;
+                  myfile << codeA <<endl;
+                }
+              }
+            }
+            //Zera arquivos canais e mensagens
+            ifstream myfileSG("../data/canais_servidores/"+nome+".txt");
+            while(getline (myfileSG,nomeA)){
+              ofstream myfileSE("../data/canais_servidores/"+nome+"_"+nomeA+".txt",ofstream::trunc);
+              myfileSE << "";
+              myfileSE.close();
+            }
+            myfileSG.close();
+            ofstream myfileSG2("../data/canais_servidores/"+nome+".txt",ofstream::trunc);
+            myfileSG2 << "";
+            myfileSG2.close();
+           
             return "Servidor ‘"+nome+"’ removido";
           }else
             return "Você não é o dono do servidor ‘"+nome+"’";
@@ -213,17 +249,6 @@ string Sistema::enter_server(int id, const string nome, const string codigo) {
       for(int i=0; i<servidores.size(); i++)
         if(servidores[i].getNome() == nome){
           if(servidores[i].getDonoId() == id || servidores[i].getCodigo() == "" || servidores[i].getCodigo() == codigo){
-            /*if(!(servidores[i].checkParticipante(id))){
-              servidores[i].addParticipante(id);
-              
-              ofstream myfile("../data/ids_servidores/ids_"+nome+".txt",fstream::app);
-              int iid;
-              stringstream ss;  
-              ss << id;  
-              ss >> iid; 
-              myfile << iid <<endl;
-              myfile.close();
-            }*/
             servidores[i].addParticipante(id);
             itr->second = {servidores[i].getNome(),""};
             return "Entrou no servidor com sucesso";
