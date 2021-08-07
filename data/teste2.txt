@@ -1,0 +1,5 @@
+create-user angelo@mail.com senhacerta Angelo Sales
+create-user angelo@mail.com senhacerta Gustavo Sales
+login angelo@gmail.com senhaerrada
+disconnect 0
+quit

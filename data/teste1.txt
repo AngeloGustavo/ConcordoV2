@@ -1,0 +1,25 @@
+create-user angelo@mail.com senha Angelo Sales
+create-user gustavo@mail.com senha Gustavo Sales
+login angelo@mail.com senha
+login gustavo@mail.com senha
+create-server 0 casa
+create-server 0 escola
+set-server-desc 0 casa "Mi casa es su casa"
+set-server-invite-code 0 casa casa123
+list-servers 0
+enter-server 0 casa
+enter-server 1 casa casa123
+list-participants 0
+create-channel 0 sala
+create-channel 0 quarto
+list-channels 0
+enter-channel 0 sala
+enter-channel 1 sala
+send-message 0 Olá, tudo bem?
+send-message 1 Olá, tudo. E com você?
+list-messages 0
+leave-channel 0
+leave-server 0 casa
+remove-server 0 casa
+disconnect 0
+quit

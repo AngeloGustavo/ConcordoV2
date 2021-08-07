@@ -1,0 +1,13 @@
+create-user angelo@mail.com senha Angelo Sales
+create-user gustavo@mail.com senha Gustavo Sales
+login angelo@mail.com senha
+login gustavo@mail.com senha
+create-server 0 casa
+create-server 2 casa
+create-server 0 casa
+set-server-desc 1 casa "Mi casa"
+set-server-invite-code 1 casa casa123
+remove-server 1 casa
+remove-server 0 casa
+list-servers 0
+quit

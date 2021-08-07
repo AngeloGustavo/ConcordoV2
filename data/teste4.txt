@@ -1,0 +1,8 @@
+create-user angelo@mail.com senha Angelo Sales
+login angelo@mail.com senha
+create-server 0 casa
+enter-server 0 casa
+create-channel 0 sala
+create-channel 0 sala
+enter-channel 0 quarto
+quit
