@@ -15,36 +15,9 @@ cmake --build .
 ```
 
 ## Como executar o projeto
-Você pode rodar o programa gerado e logo depois digitar os comandos seguidos de ENTER
+Você roda o programa gerado e logo depois digitar os comandos seguidos de ENTER
 ```console
 ./concordo
-```
-
-Ou pode criar um arquivo de texto com uma lista de comandos (um por linha) e executar o sistema redirecionando esse arquivo como entrada padrão
-```console
-./concordo < script.txt
-```
-## Como executar o conjunto dos testes
-### Para executar todas funcionalidades do sistema sem erros e com os erros execute os seguintes comandos:
-Teste 1 (Todos comandos sem erro)
-```console
-./concordo < ../data/teste1.txt
-``` 
-Teste 2 (Erros de Usuario)
-```console
-./concordo < ../data/teste2.txt
-```
-Teste 3 (Erros de Servidor) 
-```console
-./concordo < ../data/teste3.txt
-```
-Teste 4 (Erros de CanalTexto) 
-```console
-./concordo < ../data/teste4.txt
-```
-Teste 5 (Erros de Mensagem) 
-```console
-./concordo < ../data/teste5.txt
 ```
 
 ## Autor
