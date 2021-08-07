@@ -44,7 +44,7 @@ class CanalTexto{
 		* @param id 
 		* @param mensagem 
 		*/
-		void addMensagem(int id, const string mensagem);
+		void addMensagem(int id, const string mensagem, string datahora);
 			
 		/**
 		* @brief Lista nome dos elementos do vetor de mensagens
@@ -52,13 +52,6 @@ class CanalTexto{
 		* @param usuarios 
 		*/
 		void printMensagens(vector<Usuario> *usuarios);
-	
-		/**
-		* @brief Retorna string de Data e Hora no padrão especificado no documento do projeto
-		* 
-		* @return string 
-		*/
-		string HoraData();
 };
 
 #endif
