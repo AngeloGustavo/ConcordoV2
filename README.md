@@ -1,4 +1,4 @@
-# Projeto 2: Concordo
+# Projeto 2: Concordo 2.0 (Persistencia de dados)
 Clone do Discord, para humanos mais civilizados.
 
 ## O que é o Concordo?
@@ -30,4 +30,4 @@ Angelo Gustavo Souza Marinho Morais de Sales -
 Angelo Gustavo Souza Marinho Morais de Sales -
 *<angelo.sales.703@ufrn.edu.br>*
 
-Link do projeto: [https://github.com/JulioMelo-Classes/trabalho-2-AngeloGustavo.git](https://github.com/JulioMelo-Classes/trabalho-2-AngeloGustavo.git)
+Link do projeto: [https://github.com/AngeloGustavo/ConcordoV2.git](https://github.com/AngeloGustavo/ConcordoV2.git)
