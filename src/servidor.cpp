@@ -71,10 +71,10 @@ bool Servidor::checkCanal(string nome){
     return false;    
 }
 
-void Servidor::addMensagem_Server(int id, const string mensagem, string canal){
+void Servidor::addMensagem_Server(int id, const string mensagem, string canal, string datahora){
     for(int i=0; i<canaisTexto.size(); i++)
         if(canaisTexto[i].getNome() == canal)
-            canaisTexto[i].addMensagem(id, mensagem);
+            canaisTexto[i].addMensagem(id, mensagem, datahora);
 }
 
 void Servidor::printMensagens_Server(string canal, vector<Usuario>* usuarios){
