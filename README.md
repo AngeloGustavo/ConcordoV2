@@ -21,7 +21,7 @@ Você roda o programa gerado e logo depois digitar os comandos seguidos de ENTER
 ```
 
 ## Organização dos arquivos
-A organização dos arquivos foi divido em 2 partes (Usuários e Servidores) e estão alocadas na pasta data:
+A organização dos arquivos foi feita em 2 partes (Usuários e Servidores) e estão alocadas na pasta data:
 #### Usuários
 O arquivo **usuarios.txt** armazena os dados dos usuarios a cada 3 linhas contendo: email, senha e nome.
 ```
@@ -30,8 +30,7 @@ O arquivo **usuarios.txt** armazena os dados dos usuarios a cada 3 linhas conten
 {Nome}
 ```
 #### Servidores
-O arquivo **servidores.txt** armazena os dados de quantidade fixa dos servidores a cada 4 linhas contendo: id do dono, nome, descrição e código de convite. (
-Há tambem o arquivo, no mesmo padrão, **copia_servidores.txt** com fim de auxiliar a remoção de servidores.)
+O arquivo **servidores.txt** armazena os dados de quantidade fixa dos servidores a cada 4 linhas contendo: id do dono, nome, descrição e código de convite (há tambem o arquivo, no mesmo formato, **copia_servidores.txt** com fim de auxiliar a remoção de servidores).
 ```
 {ID do dono do servidor}
 {Nome do servidor}
