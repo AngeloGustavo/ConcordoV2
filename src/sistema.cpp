@@ -12,6 +12,7 @@
 #include <sstream>
 #include <ctime>
 #include <iomanip>
+#include <cstdio>
 
 using namespace std;
 /* COMANDOS */
@@ -74,15 +75,10 @@ string Sistema::create_server(int id, const string nome) {
       myfile << endl;
       myfile << endl;
       myfile.close();
-      ofstream myfile2("../data/copia_servidores.txt",fstream::app);
-      myfile2 << id <<endl;
-      myfile2 << nome <<endl;
-      myfile2 << endl;
-      myfile2 << endl;
-      myfile2.close();
+      this->copy_servers();
 
-      ofstream myfile3("../data/canais_servidores/"+nome+".txt",fstream::app);
-      myfile3.close();
+      ofstream myfile2("../data/canais_servidores/"+nome+".txt",fstream::app);
+      myfile2.close();
 
       return "Servidor criado"; 
     }
@@ -105,20 +101,15 @@ string Sistema::set_server_desc(int id, const string nome, const string descrica
             ifstream myfileC("../data/copia_servidores.txt");
             if (myfileC.is_open()){ 
               while(getline (myfileC,idA)){
-                myfile << idA <<endl;
-
                 getline (myfileC,nomeA);
-                myfile << nomeA <<endl;
-
-                if(servidores[i].getNome() == nomeA){
-                  getline (myfileC,descA);
-                  myfile << descricao <<endl;
-                }else{
-                  getline (myfileC,descA);
-                  myfile << descA <<endl;
-                }
-
+                getline (myfileC,descA);
                 getline (myfileC,codeA);
+                myfile << idA <<endl;
+                myfile << nomeA <<endl;
+                if(servidores[i].getNome() == nomeA)
+                  myfile << descricao <<endl;
+                else
+                  myfile << descA <<endl;
                 myfile << codeA <<endl;
               }
               myfile.close();
@@ -147,21 +138,16 @@ string Sistema::set_server_invite_code(int id, const string nome, const string c
             ifstream myfileC("../data/copia_servidores.txt");
             if (myfileC.is_open()){ 
               while(getline (myfileC,idA)){
-                myfile << idA <<endl;
-
                 getline (myfileC,nomeA);
-                myfile << nomeA <<endl;
-
                 getline (myfileC,descA);
+                getline (myfileC,codeA);
+                myfile << idA <<endl;
+                myfile << nomeA <<endl;
                 myfile << descA <<endl;
-
-                if(servidores[i].getNome() == nomeA){
-                  getline (myfileC,codeA);
+                if(servidores[i].getNome() == nomeA)
                   myfile << codigo <<endl;
-                }else{
-                  getline (myfileC,codeA);
+                else
                   myfile << codeA <<endl;
-                }
               }
               myfile.close();
               myfileC.close();
@@ -222,17 +208,15 @@ string Sistema::remove_server(int id, const string nome) {
                 }
               }
             }
-            //Zera arquivos canais e mensagens
+            //Deleta arquivos de canais e mensagens
             ifstream myfileSG("../data/canais_servidores/"+nome+".txt");
             while(getline (myfileSG,nomeA)){
-              ofstream myfileSE("../data/canais_servidores/"+nome+"_"+nomeA+".txt",ofstream::trunc);
-              myfileSE << "";
-              myfileSE.close();
+              string remocao = "../data/canais_servidores/"+nome+"_"+nomeA+".txt";
+              remove(remocao.c_str());
             }
             myfileSG.close();
-            ofstream myfileSG2("../data/canais_servidores/"+nome+".txt",ofstream::trunc);
-            myfileSG2 << "";
-            myfileSG2.close();
+            string remocao = "../data/canais_servidores/"+nome+".txt";
+            remove(remocao.c_str());
            
             return "Servidor ‘"+nome+"’ removido";
           }else
@@ -458,12 +442,12 @@ void Sistema::copy_servers(){
   ofstream myfileC("../data/copia_servidores.txt");
   if (myfile.is_open()){ 
     while(getline (myfile,id)){
-      myfileC << id <<endl;
       getline (myfile,nome);
-      myfileC << nome <<endl;
       getline (myfile,desc);
-      myfileC << desc <<endl;
       getline (myfile,code);
+      myfileC << id <<endl;
+      myfileC << nome <<endl;
+      myfileC << desc <<endl;
       myfileC << code <<endl;
     }
     myfile.close();
