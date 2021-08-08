@@ -317,7 +317,9 @@ string Sistema::list_channels(int id) {
 
 string Sistema::create_channel(int id, const string nome) {
   for(auto itr=usuariosLogados.begin(); itr!=usuariosLogados.end(); ++itr)
-    if(itr->first == id)
+    if(itr->first == id){
+      if((itr->second).first == "")
+        return "Você não está em um servidor";
       for(int i=0; i<servidores.size(); i++)
         if(servidores[i].getNome() == (itr->second).first){
           if(servidores[i].checkCanal(nome))
@@ -332,6 +334,7 @@ string Sistema::create_channel(int id, const string nome) {
           servidores[i].addCanal(nome);
           return "Canal de texto ‘"+nome+"’ criado";
         }
+    }
   return "Usuário não conectado";
 }
 
