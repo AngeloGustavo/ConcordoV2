@@ -1,4 +1,4 @@
-# Projeto 2: Concordo 2.0 (Persistencia de dados)
+# Projeto 2: Concordo 2.0 (Persistência de dados)
 Clone do Discord, para humanos mais civilizados.
 
 ## O que é o Concordo?
@@ -55,9 +55,6 @@ Ainda sobre os servidores há a pasta **canais_servidores** com os seguinte arqu
     {Mensagem}
     {Data e hora no formato <dd/mm/AAAA - HH:MM>}
     ```
-## Limitações desta versão
-* Remoção de arquivos
-* ...
 
 ## Autor
 
