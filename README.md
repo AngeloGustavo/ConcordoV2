@@ -39,7 +39,7 @@ Há tambem o arquivo, no mesmo padrão, **copia_servidores.txt** com fim de auxi
 {Código de convite}
 ```
 Ainda sobre os servidores há a pasta **canais_servidores** com os seguinte arquivos referentes aos canais e suas mensagens:
-* {nome do servidor}.txt
+* **{nome do servidor}.txt**
   * Com os nomes dos canais um por linha.
      ```
     {Canal 1}
@@ -48,7 +48,7 @@ Ainda sobre os servidores há a pasta **canais_servidores** com os seguinte arqu
     .
     .
     ```
-* {nome do servidor}_{nome do canal}.txt.txt
+* **{nome do servidor}_{nome do canal}.txt**
   * Com as mensagens sendo registrada cada em 3 linhas no formato:
     ```
     {ID do autor}
